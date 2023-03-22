@@ -29,21 +29,3 @@ func main() {
 	wg.Wait()
 	fmt.Println("爬取完成")
 }
-
-// // 指定画师ID下载
-// func Designated_Illustrator_Download(Illustrator_id string, Artwork_Length int,
-// 	res []string, wg *sync.WaitGroup, username string) {
-
-// 	defer wg.Done()
-// 	for i := Artwork_Length - 1; i != 0; i-- {
-// 		resp := get_illusts_info(illusts_url, res[i]) //获取插图的body返回信息
-// 		// fmt.Println(res[i], i)
-// 		regexp, _ := regexp.Compile(`"original":"(.*?)"`)
-// 		img_link := regexp.FindString(resp)        //获取插图原图的链接信息
-// 		img_url := strings.Split(img_link, `"`)[3] //获取插图链接
-// 		title := get_illusts_title(resp)           //获得插图的标题
-// 		title = utils.Remove_Punctuation_String(title)
-// 		time.Sleep(1 * time.Second)
-// 		downloadImg(img_url, title, username) //下载图片
-// 	}
-// }
