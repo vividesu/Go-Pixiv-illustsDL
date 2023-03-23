@@ -1,2 +1,20 @@
 # Go-Pixiv-illustsDL
-Go Pixiv-illusts download
+目前实现功能:   
+1. 指定插图下载路径
+2. 指定画师ID爬取画师主页的插图
+
+使用方法(Usage):  
+在config.json文件下的设置下图路径以及需要下载画师的名称和ID  
+例如:  
+```
+"storage path" : "G:/Pixiv/",   //此处为保存路径 <br>
+"Illustrators":{  
+    "画师名称" : "画师ID",  
+    "画师名称" : "画师ID"  
+}
+```
+
+目前待改进:  
+1. 目前只能单次下载暂不能对已下载的图片查重 再运行存在重复下载的读写损耗
+
+2. 插图获取不完全
