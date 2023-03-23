@@ -131,15 +131,12 @@ func Config_init() (map[string]string, []string, string) {
 	config_value := Read_Config_Json()
 	RootDir := config_value["data"].(map[string]interface{})["storage path"].(string)
 	Illustrators_Info := config_value["data"].(map[string]interface{})["Illustrators"].(map[string]interface{})
-	// Illustrators_Info_len := len(Illustrators_Info)
 	for Name := range Illustrators_Info {
 		Illustrators_Config_map[Name] = Illustrators_Info[Name].(string)
 		Illustrators_Config_List = append(Illustrators_Config_List, Name)
 	}
 	Check_Pixiv_DirIsExist(RootDir, Illustrators_Config_List)
-	// for k, v := range Illustrators_Config_map {
-	// 	fmt.Println(k, v)
-	// }
+
 	return Illustrators_Config_map, Illustrators_Config_List, RootDir
 }
 
@@ -167,6 +164,7 @@ func Check_Pixiv_DirIsExist(RootDir string, IllustratorsList []string) {
 	}
 
 	for _, SubDir := range IllustratorsList {
+		SubDir = Remove_Punctuation_String(SubDir)
 		if _, err := os.Stat(RootDir + SubDir); os.IsNotExist(err) {
 			os.Mkdir(RootDir+SubDir, 0755)
 			time.Sleep(2 * time.Second)
